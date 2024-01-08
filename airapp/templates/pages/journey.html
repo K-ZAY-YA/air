@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey Table</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://kit.fontawesome.com/61580a3fab.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <ul>
+        <li><a href="{% url 'traveller' %}">Traveller</a></li>
+        <li><a href="{% url 'airline' %}">Airline</a></li>
+        <li><a href="{% url 'risk' %}">Risk Action</a></li>
+        <li><a href="{% url 'crew' %}">Crew</a></li>
+        <li><a href="{% url 'journey' %}">Journey</a></li>
+      </ul>
+    </nav>
+
+    <div class="tablesection">
+      <h1>Welcome From Airline Myanmar</h1>
+      <div class="table-container">
+        <h2 style="margin-left: 10px;">Journey Search Table</h2>
+        {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alertmessage" role="alert">{{ message }}</div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="border-top-left-radius: 10px;">No</th>
+                <th>Name</th>
+                <th>D.O.B</th>
+                <th>Father</th>
+                <th>Passport</th>
+                <th>Gender</th>
+                <th>FlightName</th>
+                <th>Sector</th>
+                <th>Depature Date and Time</th>
+                <th>Arrival Date and Time</th>
+                <th>Risk Status</th>
+                <th style="border-top-right-radius: 10px;">Action</th>
+              </tr>
+            </thead>
+            {% for journeys in journeys %}
+            <tbody>
+              <tr>
+                <td>{{journeys.no}}</td>
+                <td>{{journeys.name}}</td>
+                <td>{{journeys.dob}}</td>
+                <td>{{journeys.father}}</td>
+                <td>{{journeys.passport}}</td>
+                <td>{{journeys.gender}}</td>
+                <td>{{journeys.flightname}}</td>
+                <td>{{journeys.sector}}</td>
+                <td>{{journeys.depature_date_time}}</td>
+                <td>{{journeys.arrival_date_time}}</td>
+                <td>{{journeys.risk_status}}</td>
+                <td><a href="{% url 'journeyeidt' journeys.pk %}"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{% url 'deletejourney' journeys.pk %}"><i class="fa-regular fa-trash-can"></i></a></td>
+              </tr>
+          {% endfor %}
+            </tbody>
+          </table>
+          <a href="{% url 'createjourney' %}"><button style="margin-left: 20px;">create table</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

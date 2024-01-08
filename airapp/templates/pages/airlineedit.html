@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airline Edit</title>
+    <script src="https://kit.fontawesome.com/c4dbab3247.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/styleedit.css' %}" />
+  </head>
+  <body>
+    <nav>
+      <h1>Airline Update</h1>
+    </nav>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alertmessage" role="alert">{{ message }}</div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    <a href="{% url 'airline' %}" class="backicon"><i class="fa-solid fa-backward"></i></a>
+    <div class="container">
+      <form action="{% url 'airupdate' airlines.pk %}" method="POST">
+        {% csrf_token %}
+<label for="operating_date">Operating Date</label>
+        <input type="date" name="operating_date" required />
+        <input type="text" name="airline" id="airline" placeholder="Airline" required />
+        <input type="text" name="airline_name" id="name" placeholder="Airline Name" required />
+        <input type="number" name="airline_no" placeholder="Airline Number" required />
+        <input type="text" name="depature_port" placeholder="Departure Port" required />
+        <input type="text" name="arrival_port" placeholder="Arrival Port" required />
+        <input type="date" name="depature_date_time" placeholder="Departure Date and Time" required />
+        <input type="date" name="arrival_date_time" placeholder="Arrival Date and Time" required />
+        <input type="text" name="flight_status" placeholder="Flight Status" required />
+        <input type="text" name="delay_issue" placeholder="Delay Issue" required />
+        <input type="text" name="remarks" placeholder="Remarks" required />    
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </body>
+</html>

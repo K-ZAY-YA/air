@@ -1,0 +1,115 @@
+/* CSS for test.css */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+
+}
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-x: auto;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+.sidebar {
+  background: rgb(18, 12, 100);
+  padding: 20px;
+  width: 100px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 100%;
+}
+nav ul li{
+  margin-bottom: 40px;
+}
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  padding: 10px 0;
+  transition: 0.5s;
+}
+nav ul li :hover {
+  background-color: rgba(255, 255, 255, 0.2); 
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+table {
+  width: 90vw;
+  border-collapse: collapse;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.table-container h2{
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+a {
+  text-decoration: none;
+}
+td a{
+  background-color: firebrick;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 80px;
+  width: 100%; /* Full width */
+  z-index: 999; /* Ensure it's above other content */
+}
+
+.alertmessage {
+  background-color: rgba(127, 187, 255, 0.468);
+  padding: 10px;
+  text-align: center;
+  width: 50vw;
+  max-width: 90%; /* Limit maximum width */
+}

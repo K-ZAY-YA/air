@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crew Table</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://kit.fontawesome.com/61580a3fab.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <ul>
+        <li><a href="{% url 'traveller' %}">Traveller</a></li>
+        <li><a href="{% url 'airline' %}">Airline</a></li>
+        <li><a href="{% url 'risk' %}">Risk Action</a></li>
+        <li><a href="{% url 'crew' %}">Crew</a></li>
+        <li><a href="{% url 'journey' %}">Journey</a></li>
+      </ul>
+    </nav>
+
+    <div class="tablesection">
+      <h1>Welcome From Airline Myanmar</h1>
+      <div class="table-container">
+        <h2 style="margin-left: 10px;">Crew Table</h2>
+        {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alertmessage" role="alert">{{ message }}</div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="border-top-left-radius: 10px;">Flight</th>
+                <th>Service Status</th>
+                <th>Name</th>
+                <th>Depature Port</th>
+                <th>Arrival Port</th>
+                <th>Depature Date and Time</th>
+                <th>Arrival Date and Time</th>
+                <th style="border-top-right-radius: 10px;">Action</th>
+              </tr>
+            </thead>
+            {% for crews in crews %}
+            <tbody>
+              <tr>
+                <td>{{crews.flight}}</td>
+                <td>{{crews.service_status}}</td>
+                <td>{{crews.name}}</td>
+                <td>{{crews.depature_port}}</td>
+                <td>{{crews.arrival_port}}</td>
+                <td>{{crews.depature_date_time}}</td>
+                <td>{{crews.arrival_date_time}}</td>
+                <td><a href="{% url 'creweidt' crews.pk %}"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{% url 'deletecrew' crews.pk %}"><i class="fa-regular fa-trash-can"></i></a></td>
+              </tr>
+            </tbody>
+          {% endfor %}
+          </table>
+          <a href="{% url 'createcrew' %}"><button style="margin-left: 20px;">create table</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

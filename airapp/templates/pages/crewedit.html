@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crew Edit</title>
+    <link rel="stylesheet" href="{% static 'css/styleedit.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c4dbab3247.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav>
+      <h1>Crew Update</h1>
+    </nav>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alertmessage" role="alert">{{ message }}</div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    <a href="{% url 'crew' %}" class="backicon"><i class="fa-solid fa-backward"></i></a>
+    <div class="container">
+      <form action="{% url 'crewupdate' crews.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="flight" placeholder="Flight" />
+        <input type="text" name="service_status" placeholder="Service Status" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="departure_port" placeholder="Departure Port" />
+        <input type="text" name="arrival_port" placeholder="Arrival Port" />
+        <input type="datetime-local" name="departure_date_time" placeholder="Departure Date and Time" />
+        <input type="datetime-local" name="arrival_date_time" placeholder="Arrival Date and Time" />
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </body>
+</html>
